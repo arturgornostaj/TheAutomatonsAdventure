@@ -6,14 +6,15 @@ using UnityEngine.InputSystem;
 
 public class InputActionsManager : MonoBehaviour
 {
-    [SerializeField] GameObject automaton;
-    [SerializeField] CameraFocus camera;
+    GameObject automaton;
+    [SerializeField] CameraFocus cameraFocus;
 
     Movement movement;
     Stance stance;
 
     private void Start()
     {
+        automaton = GameObject.FindGameObjectWithTag("Player");
         stance = automaton.GetComponent<Stance>();
         movement = automaton.GetComponent<Movement>();
 
@@ -39,9 +40,9 @@ public class InputActionsManager : MonoBehaviour
     {
         if (context.performed)
         {
-            camera.SetRotationVector(context.ReadValue<Vector2>());
+            cameraFocus.SetRotationVector(context.ReadValue<Vector2>());
         }
-        else camera.SetRotationVector(Vector2.zero);
+        else cameraFocus.SetRotationVector(Vector2.zero);
 
 
     }

@@ -135,6 +135,7 @@ GameObject:
   - component: {fileID: 82761165}
   - component: {fileID: 82761168}
   - component: {fileID: 82761167}
+  - component: {fileID: 82761169}
   m_Layer: 0
   m_Name: Game Manager
   m_TagString: Untagged
@@ -162,7 +163,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 82761164}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -8.81}
+  m_LocalPosition: {x: 0, y: 3.09, z: -8.81}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -181,7 +182,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0f161b5112051e4f993757e9dba0c26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  automaton: {fileID: 823041531}
+  cameraFocus: {fileID: 1944472441}
 --- !u!114 &82761168
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -239,11 +240,41 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: d9fb0e5a-51cf-468b-a0c1-59204cc21780
     m_ActionName: Basic/ChangeMode[/Mouse/rightButton]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 82761167}
+        m_TargetAssemblyTypeName: InputActionsManager, Assembly-CSharp
+        m_MethodName: OnRotateCamera
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 25c6a6cc-7ec6-4153-840e-3b947745b3b2
+    m_ActionName: Basic/Camera rotation[/Mouse/delta]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Basic
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &82761169
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 82761164}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6e2e0580aae810418296c466973184c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stance: {fileID: 980345372}
+  hp: {fileID: 1028037902}
 --- !u!1 &451178166
 GameObject:
   m_ObjectHideFlags: 0
@@ -285,7 +316,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 451178166}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 3.09, z: -7.49}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -326,7 +357,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-8400
+  m_Name: pb_Mesh24850
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -601,11 +632,12 @@ GameObject:
   - component: {fileID: 823041537}
   - component: {fileID: 823041539}
   - component: {fileID: 823041534}
+  - component: {fileID: 823041540}
   - component: {fileID: 823041538}
   - component: {fileID: 823041535}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -670,6 +702,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f994c9401d343044a5d13e5952538a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onHpChange:
+    m_PersistentCalls:
+      m_Calls: []
   _hp: 3
 --- !u!114 &823041537
 MonoBehaviour:
@@ -697,6 +732,87 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stance: 0
+  onScoutingStanceEnter:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 823041534}
+        m_TargetAssemblyTypeName: Movement, Assembly-CSharp
+        m_MethodName: OnScoutingEnter
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 82761169}
+        m_TargetAssemblyTypeName: UI, Assembly-CSharp
+        m_MethodName: OnScoutingEnter
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onFightingStanceEnter:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 823041534}
+        m_TargetAssemblyTypeName: Movement, Assembly-CSharp
+        m_MethodName: OnFightingEnter
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 82761169}
+        m_TargetAssemblyTypeName: UI, Assembly-CSharp
+        m_MethodName: OnFightingEnter
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onSearchingStanceEnter:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 823041534}
+        m_TargetAssemblyTypeName: Movement, Assembly-CSharp
+        m_MethodName: OnSearchingEnter
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 82761169}
+        m_TargetAssemblyTypeName: UI, Assembly-CSharp
+        m_MethodName: OnSearchingEnter
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &823041539
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -709,6 +825,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0578093980f93e45a164c681c0c9fd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &823041540
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 823041531}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f994c9401d343044a5d13e5952538a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onHpChange:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 82761169}
+        m_TargetAssemblyTypeName: UI, Assembly-CSharp
+        m_MethodName: OnHPChange
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: wtf
+          m_BoolArgument: 0
+        m_CallState: 2
+  _hp: 0
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -851,7 +995,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Mode: Scouting'
+  m_text: Null
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -986,7 +1130,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'HP: 3'
+  m_text: Null
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1094,6 +1238,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   automatonPosition: {fileID: 823041533}
   followSpeed: 1
+  turnSpeed: 0.1
 --- !u!4 &1944472442
 Transform:
   m_ObjectHideFlags: 0

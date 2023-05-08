@@ -1,26 +1,37 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Stance : MonoBehaviour
 {
     public AutomatonStance stance;
-
-    private void Start()
-    {
-        stance = AutomatonStance.Scouting;
-    }
+    [SerializeField] UnityEvent onScoutingStanceEnter, onFightingStanceEnter, onSearchingStanceEnter;
 
     public void ChangeStance(AutomatonStance desireStance)
     {
-        stance = desireStance;
+        print("Automaton w trybie: " + desireStance);
+        switch (desireStance)
+        {
+            case AutomatonStance.Scouting:
+                onScoutingStanceEnter.Invoke();
+                stance = desireStance;
+                break;
+            case AutomatonStance.Fighting:
+                onFightingStanceEnter.Invoke();
+                stance = desireStance;
+                break;
+            case AutomatonStance.Searching:
+                onSearchingStanceEnter.Invoke();
+                stance = desireStance;
+                break;
+            default:
+                onScoutingStanceEnter.Invoke();
+                stance = desireStance;
+                break;
+        }
     }
 
+
 }
 
-public enum AutomatonStance
-{
-    Scouting,
-    Fighting,
-    Searching
-}

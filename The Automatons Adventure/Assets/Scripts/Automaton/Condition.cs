@@ -1,9 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Condition : MonoBehaviour
 {
+
+    [SerializeField] UnityEvent onHpChange;
+
+
     [SerializeField] private int _hp;
     public int hp
     {
@@ -14,5 +19,27 @@ public class Condition : MonoBehaviour
             else _hp = value;
         }
     }
+
+    public void ChangeHp(int setHpValue)
+    {
+        hp = setHpValue;
+        print("Poziom zdrowia Automatona to: " + hp);
+
+        onHpChange.Invoke();
+        
+    }
+
+    public void RecieveDamage(int damage)
+    {
+        hp -= damage;
+        onHpChange.Invoke();
+    }
+
+    public void RestoreHp(int amount)
+    {
+        hp += amount;
+        onHpChange.Invoke();
+    }
+
 
 }
