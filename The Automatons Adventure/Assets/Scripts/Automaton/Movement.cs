@@ -36,7 +36,6 @@ public class Movement : MonoBehaviour
     public void SetMovementVector(Vector2 vector)
     {
         movementVector = vector;
-        print(vector);
     }
 
 
