@@ -32,6 +32,11 @@ public class Stance : MonoBehaviour
         }
     }
 
+    public AutomatonStance CurrentStance()
+    {
+        return stance;
+    }
+
 
 }
 

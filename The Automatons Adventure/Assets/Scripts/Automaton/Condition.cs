@@ -6,7 +6,7 @@ using UnityEngine.Events;
 public class Condition : MonoBehaviour
 {
 
-    [SerializeField] UnityEvent onHpChange;
+    [SerializeField] UnityEvent onHpChange, onKilled;
 
 
     [SerializeField] private int _hp;
@@ -17,6 +17,15 @@ public class Condition : MonoBehaviour
         {
             if (value < 0) _hp = 0;
             else _hp = value;
+        }
+    }
+
+    void AutomatonIsKilled()
+    {
+        if(hp == 0)
+        {
+            onHpChange.Invoke();
+            onKilled.Invoke();
         }
     }
 

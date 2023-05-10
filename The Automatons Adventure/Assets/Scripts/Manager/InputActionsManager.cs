@@ -4,21 +4,9 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 
-public class InputActionsManager : MonoBehaviour
+public class InputActionsManager : GameManager
 {
-    GameObject automaton;
     [SerializeField] CameraFocus cameraFocus;
-
-    Movement movement;
-    Stance stance;
-
-    private void Start()
-    {
-        automaton = GameObject.FindGameObjectWithTag("Player");
-        stance = automaton.GetComponent<Stance>();
-        movement = automaton.GetComponent<Movement>();
-
-    }
 
     public void OnChangeStance(InputAction.CallbackContext context)
     {
@@ -45,5 +33,13 @@ public class InputActionsManager : MonoBehaviour
         else cameraFocus.SetRotationVector(Vector2.zero);
 
 
+    }
+
+    public void OnShot(InputAction.CallbackContext context)
+    {
+        if(context.performed && stance.CurrentStance() == AutomatonStance.Fighting)
+        {
+            weapons.Shoot();
+        }
     }
 }

@@ -3,38 +3,35 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class UI : MonoBehaviour, IStanceUpdate
+public class UI : GameManager, IStanceUpdate
 {
-    [SerializeField] TMP_Text stance;
-    [SerializeField] TMP_Text hp;
-    GameObject automaton;
-
-    Condition condition;
-
-    private void Awake()
-    {
-        automaton = GameObject.FindGameObjectWithTag("Player");
-        condition = automaton.GetComponent<Condition>();
-    }
+    [SerializeField] TMP_Text stanceTxt;
+    [SerializeField] TMP_Text hpTxt;
+    [SerializeField] TMP_Text ammoTxt;
 
     public void OnHPChange()
     {
-        hp.text = "Hp: " + condition.hp;
+        hpTxt.text = "Hp: " + condition.hp;
+    }
+
+    public void OnAmmoAmountChange()
+    {
+        ammoTxt.text = "Ammo: " + weapons.ammo;
     }
 
     public void OnFightingEnter()
     {
-        stance.text = "Automaton mode: Combat";
+        stanceTxt.text = "Automaton mode: Combat";
     }
 
     public void OnScoutingEnter()
     {
-        stance.text = "Automaton mode: Scout";
+        stanceTxt.text = "Automaton mode: Scout";
     }
 
     public void OnSearchingEnter()
     {
-        stance.text = "Automaton mode: Search";
+        stanceTxt.text = "Automaton mode: Search";
     }
 
 }

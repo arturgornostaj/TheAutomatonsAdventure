@@ -6,15 +6,20 @@ public class GameManager : MonoBehaviour
 {
     GameObject automaton;
 
-    Stance stance;
-    Condition condition;
+    protected Stance stance;
+    protected Condition condition;
+    protected Weapons weapons;
+    protected Movement movement;
 
 
     private void Awake()
     {
         automaton = GameObject.FindGameObjectWithTag("Player");
+
         condition = automaton.GetComponent<Condition>();
         stance = automaton.GetComponent<Stance>();
+        weapons = automaton.GetComponent<Weapons>();
+        movement = automaton.GetComponent<Movement>();
     }
 
     void Start()
@@ -34,6 +39,7 @@ public class GameManager : MonoBehaviour
      
         condition.ChangeHp(3);       
         stance.ChangeStance(AutomatonStance.Scouting);
+        weapons.ChangeAmmoAmount(200);
 
         print(this + "Inicjalizowano automatona");
     }
