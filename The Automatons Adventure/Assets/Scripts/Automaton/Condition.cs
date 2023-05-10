@@ -23,7 +23,7 @@ public class Condition : MonoBehaviour
     public void ChangeHp(int setHpValue)
     {
         hp = setHpValue;
-        print("Poziom zdrowia Automatona to: " + hp);
+        print(this +  "Poziom zdrowia Automatona to: " + hp);
 
         onHpChange.Invoke();
         

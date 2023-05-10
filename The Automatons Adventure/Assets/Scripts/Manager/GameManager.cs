@@ -35,7 +35,7 @@ public class GameManager : MonoBehaviour
         condition.ChangeHp(3);       
         stance.ChangeStance(AutomatonStance.Scouting);
 
-        print("Inicjalizowano automatona");
+        print(this + "Inicjalizowano automatona");
     }
 }
 

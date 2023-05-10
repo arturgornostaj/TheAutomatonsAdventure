@@ -19,7 +19,6 @@ public class UI : MonoBehaviour, IStanceUpdate
 
     public void OnHPChange()
     {
-        print("Zaktualizowano hp");
         hp.text = "Hp: " + condition.hp;
     }
 
