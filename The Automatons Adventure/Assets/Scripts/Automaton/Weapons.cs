@@ -10,8 +10,11 @@ public class Weapons : MonoBehaviour
 
     [SerializeField] Transform barrel;
     [SerializeField] GameObject bullet;
+    [SerializeField] float shootRange = 50;
 
-    [SerializeField] Vector3 offsetToEndOfBarrel;
+    [SerializeField] float dispersionRange;
+    [SerializeField] GameObject laser;
+    [SerializeField] Light light;
     public int ammo
     {
         get { return _ammo; }
@@ -29,7 +32,8 @@ public class Weapons : MonoBehaviour
             ammo--;
             onShot.Invoke();
             GameObject firedBullet =  Instantiate(bullet, barrel.position, Quaternion.identity);
-            firedBullet.GetComponent<Rigidbody>().AddRelativeForce(barrel.transform.forward * 50, ForceMode.Impulse);
+            Vector3 currentDispersion = new Vector3(Random.Range(-dispersionRange, dispersionRange), Random.Range(-dispersionRange, dispersionRange), 0);
+            firedBullet.GetComponent<Rigidbody>().AddRelativeForce((barrel.transform.forward * shootRange) + currentDispersion, ForceMode.Impulse);
             print(this + "Wystrzelono pocisk, zosta³o pocisków: " + ammo);
         }
         
@@ -39,5 +43,17 @@ public class Weapons : MonoBehaviour
     {
         ammo = amount;
         onAmmoChange.Invoke();
+    }
+
+    public void EnableLaser()
+    {
+        laser.SetActive(true);
+        light.color = Color.red;
+    }
+
+    public void DisableLaser()
+    {
+        laser.SetActive(false);
+        light.color = Color.white;
     }
 }
