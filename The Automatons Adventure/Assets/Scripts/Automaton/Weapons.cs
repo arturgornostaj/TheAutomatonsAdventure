@@ -14,7 +14,7 @@ public class Weapons : MonoBehaviour
 
     [SerializeField] float dispersionRange;
     [SerializeField] GameObject laser;
-    [SerializeField] Light light;
+    [SerializeField] Light lamp;
     public int ammo
     {
         get { return _ammo; }
@@ -45,15 +45,21 @@ public class Weapons : MonoBehaviour
         onAmmoChange.Invoke();
     }
 
+    public void AddAmmo(int amount)
+    {
+        ammo += amount;
+        onAmmoChange.Invoke();
+    }
+
     public void EnableLaser()
     {
         laser.SetActive(true);
-        light.color = Color.red;
+        lamp.color = Color.red;
     }
 
     public void DisableLaser()
     {
         laser.SetActive(false);
-        light.color = Color.white;
+        lamp.color = Color.white;
     }
 }

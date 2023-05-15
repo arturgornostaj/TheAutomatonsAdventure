@@ -39,7 +39,7 @@ public class GameManager : MonoBehaviour
      
         condition.ChangeHp(3);       
         stance.ChangeStance(AutomatonStance.Scouting);
-        weapons.ChangeAmmoAmount(200);
+        weapons.ChangeAmmoAmount(5);
 
         print(this + "Inicjalizowano automatona");
     }
