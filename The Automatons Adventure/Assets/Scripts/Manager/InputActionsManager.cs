@@ -40,6 +40,9 @@ public class InputActionsManager : GameManager
         if(context.performed && stance.CurrentStance() == AutomatonStance.Fighting)
         {
             weapons.Shoot();
+        } else if (context.performed && stance.CurrentStance() == AutomatonStance.Scouting)
+        {
+            interactions.StartSearching();
         }
     }
 }

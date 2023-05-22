@@ -8,6 +8,7 @@ public class UI : GameManager, IStanceUpdate
     [SerializeField] TMP_Text stanceTxt;
     [SerializeField] TMP_Text hpTxt;
     [SerializeField] TMP_Text ammoTxt;
+    [SerializeField] TMP_Text scoreTxt;
 
     public void OnHPChange()
     {
@@ -32,6 +33,11 @@ public class UI : GameManager, IStanceUpdate
     public void OnSearchingEnter()
     {
         stanceTxt.text = "Automaton mode: Search";
+    }
+
+    public void OnScoreChange()
+    {
+        scoreTxt.text = score.CurrentScore().ToString();
     }
 
 }

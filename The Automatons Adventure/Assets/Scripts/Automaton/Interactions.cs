@@ -4,15 +4,10 @@ using UnityEngine;
 
 public class Interactions : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+ 
+    public void StartSearching()
     {
-        
+        print(this + " Przeszukuje");
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

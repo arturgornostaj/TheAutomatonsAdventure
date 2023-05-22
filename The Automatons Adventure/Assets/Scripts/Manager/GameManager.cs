@@ -10,6 +10,8 @@ public class GameManager : MonoBehaviour
     protected Condition condition;
     protected Weapons weapons;
     protected Movement movement;
+    protected Interactions interactions;
+    protected Points score;
 
 
     private void Awake()
@@ -20,6 +22,9 @@ public class GameManager : MonoBehaviour
         stance = automaton.GetComponent<Stance>();
         weapons = automaton.GetComponent<Weapons>();
         movement = automaton.GetComponent<Movement>();
+        interactions = automaton.GetComponent<Interactions>();
+        score = automaton.GetComponent<Points>();
+
     }
 
     void Start()
@@ -40,6 +45,7 @@ public class GameManager : MonoBehaviour
         condition.ChangeHp(3);       
         stance.ChangeStance(AutomatonStance.Scouting);
         weapons.ChangeAmmoAmount(5);
+        score.ChangeScore(0);
 
         print(this + "Inicjalizowano automatona");
     }
