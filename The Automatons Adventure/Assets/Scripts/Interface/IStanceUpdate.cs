@@ -11,5 +11,5 @@ public enum AutomatonStance
 {
     Scouting,
     Fighting,
-    Searching
+    Searching,
 }

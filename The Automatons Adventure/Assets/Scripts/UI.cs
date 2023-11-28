@@ -12,32 +12,27 @@ public class UI : GameManager, IStanceUpdate
 
     public void OnHPChange()
     {
-        hpTxt.text = "Hp: " + condition.hp;
+        //hpTxt.text = "Hp: " + condition.hp;
     }
 
     public void OnAmmoAmountChange()
     {
-        ammoTxt.text = "Ammo: " + weapons.ammo;
+        //ammoTxt.text = "Ammo: " + weapons.ammo;
     }
 
     public void OnFightingEnter()
     {
-        stanceTxt.text = "Automaton mode: Combat";
+        //stanceTxt.text = "Automaton mode: Combat";
     }
 
     public void OnScoutingEnter()
     {
-        stanceTxt.text = "Automaton mode: Scout";
+        //stanceTxt.text = "Automaton mode: Scout";
     }
 
     public void OnSearchingEnter()
     {
-        stanceTxt.text = "Automaton mode: Search";
-    }
-
-    public void OnScoreChange()
-    {
-        scoreTxt.text = score.CurrentScore().ToString();
+        //stanceTxt.text = "Automaton mode: Search";
     }
 
 }

@@ -6,7 +6,7 @@ public class HostileStateManager : MonoBehaviour
 {
     [SerializeField] GameObject automaton;
     [SerializeField] float sightRangeMin = 10;
-    [SerializeField] float sightRangeMax = 10;
+    //[SerializeField] float sightRangeMax = 10;
     bool isAutomatonInSight;
 
     HostileBaseState currentState;

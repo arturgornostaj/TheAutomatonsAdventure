@@ -5,25 +5,26 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     GameObject automaton;
+    GameObject well;
+    GameObject plant;
 
     protected Stance stance;
-    protected Condition condition;
     protected Weapons weapons;
     protected Movement movement;
     protected Interactions interactions;
-    protected Points score;
 
 
     private void Awake()
     {
         automaton = GameObject.FindGameObjectWithTag("Player");
+        well = GameObject.FindGameObjectWithTag("Well");
+        plant = GameObject.FindGameObjectWithTag("Plant");
 
-        condition = automaton.GetComponent<Condition>();
         stance = automaton.GetComponent<Stance>();
         weapons = automaton.GetComponent<Weapons>();
         movement = automaton.GetComponent<Movement>();
         interactions = automaton.GetComponent<Interactions>();
-        score = automaton.GetComponent<Points>();
+        
 
     }
 
@@ -41,11 +42,9 @@ public class GameManager : MonoBehaviour
 
     void InitializeAutomaton()
     {
-     
-        condition.ChangeHp(3);       
+           
         stance.ChangeStance(AutomatonStance.Scouting);
         weapons.ChangeAmmoAmount(5);
-        score.ChangeScore(0);
 
         print(this + "Inicjalizowano automatona");
     }

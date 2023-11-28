@@ -18,7 +18,7 @@ public class Movement : MonoBehaviour, IStanceUpdate
         automaton = GetComponent<CharacterController>();
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         AutomatonMove();
         AutomatonRotate();
@@ -26,12 +26,12 @@ public class Movement : MonoBehaviour, IStanceUpdate
 
     void AutomatonMove()
     {
-        automaton.SimpleMove(transform.TransformDirection(Vector3.forward) * currentMovementSpeed * movementVector.y);
+        automaton.SimpleMove(transform.TransformDirection(Vector3.forward) * currentMovementSpeed * movementVector.y * Time.deltaTime);
     }
 
     void AutomatonRotate()
     {
-        transform.Rotate(0, movementVector.x * currentTurnSpeed, 0);
+        transform.Rotate(0, movementVector.x * currentTurnSpeed * Time.deltaTime, 0);
     }
 
     public void SetMovementVector(Vector2 vector)
