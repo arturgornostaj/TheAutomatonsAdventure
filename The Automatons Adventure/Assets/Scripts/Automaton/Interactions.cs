@@ -35,6 +35,7 @@ public class Interactions : MonoBehaviour
 
             interactionPosition.transform.DetachChildren();
             bucketRb.isKinematic= false;
+            bucketRb.AddTorque(Vector3.left * 3f);
 
         }
 

@@ -15,6 +15,16 @@ public class Bucket : MonoBehaviour
         }
     }
 
+    [SerializeField] Transform wellPosition;
+
+    Rigidbody bucketRb;
+
+    private void Start()
+    {
+        bucketRb = GetComponent<Rigidbody>();
+    }
+
+
     public void AddWater(int water)
     {
 
