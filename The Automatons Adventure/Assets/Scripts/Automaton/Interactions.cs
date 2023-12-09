@@ -5,41 +5,42 @@ using UnityEngine;
 public class Interactions : MonoBehaviour
 {
 
-    [SerializeField] GameObject interactable;
+    [SerializeField] Bucket interactable;
+
     [SerializeField] Transform interactionPosition;
     [SerializeField] float rangeToInteract = .7f;
+    [SerializeField] float disposeForceFactor = 1.2f;
 
-    Rigidbody bucketRb;
     bool isCarringObject = false;
-    float distanceToInteractable;
+
+
+    Vector3 DisposeVector()
+    {
+        Vector3 disposeFactor = new Vector3(Random.Range(-1,1), 0, 0) + Vector3.forward * disposeForceFactor;
+        return disposeFactor;
+    }
 
     public void StartSearching()
     {
         print(this + " Przeszukuje");
 
-        distanceToInteractable = Vector3.Distance(interactable.transform.position, transform.position);
-        if((distanceToInteractable < rangeToInteract) && !isCarringObject)
+        if((Vector3.Distance(interactable.transform.position, transform.position) < rangeToInteract) && !isCarringObject)
         {
-            print("Podnoszê wiaderko");
+            print("Podnoszê przedmiot");
             isCarringObject = true;
+            interactable.GrabObject(interactionPosition);
 
-            bucketRb = interactable.GetComponent<Rigidbody>();
-            bucketRb.isKinematic = true;
-            interactable.transform.position = Vector3.Lerp(interactable.transform.position, interactionPosition.position, 1f);
-            interactable.transform.SetParent(interactionPosition);
             
         } else if(isCarringObject)
         {
-            print("Odrzucam wiaderko");
+            print("Odrzucam przedmiot");
             isCarringObject = false;
-
-            interactionPosition.transform.DetachChildren();
-            bucketRb.isKinematic= false;
-            bucketRb.AddTorque(Vector3.left * 3f);
+            interactable.DisposeObject(interactionPosition, DisposeVector());
 
         }
 
 
     }
+
 
 }

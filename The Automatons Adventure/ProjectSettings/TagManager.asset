@@ -8,6 +8,7 @@ TagManager:
   - Well
   - Plant
   - Bucket
+  - Terrain
   layers:
   - Default
   - TransparentFX
